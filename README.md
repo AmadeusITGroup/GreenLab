@@ -1,4 +1,4 @@
-# GreenLab v0.3
+# GreenLab v0.4
 
 ## What is the repository?
 
