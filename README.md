@@ -13,20 +13,19 @@ The third lab is to plan a schedule of jobs to minimize carbon emissions within 
 
 ## Usage
 
-There are 2 ways to do the labs: with or without the Docker image.
-
-## 1. With Docker image
-
-### 1.1. Requirements
+### 1. Requirements
 
 The following dependencies need to be installed before running :
 * Docker or Podman
 
-### 1.2. Running the labs
+### 2. Running the labs
 
 Options
+
 -l *lab_number* : select lab number to run (mandatory)
+
 -s : run solution
+
 -c : execute the C++ version of Lab 1
 
 From the root of the repository, run:
