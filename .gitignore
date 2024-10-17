@@ -1,0 +1,15 @@
+# Ignore python generated files and directories
+.venv
+__init__.py
+__pycache__
+
+# Ignore mac variable
+.DS_Store
+
+# Ignore vscode process
+.vscode
+
+# Ignore binaries compiled for lab1.2
+*.bin
+*.exe
+.coverage
