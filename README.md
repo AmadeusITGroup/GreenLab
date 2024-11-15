@@ -1,4 +1,4 @@
-# GreenLab v0.4
+# GreenLab v0.6
 
 ## What is the repository?
 
@@ -41,5 +41,5 @@ docker run --rm -it -v ./Labs:/app/Labs ravichou/greenlab:*version_number* pytho
 ```
 Example:
 ```shell
-docker run --rm -it -v ./Labs:/app/Labs ravichou/greenlab:0.0.4 python3 runner.py -l 1.2
+docker run --rm -it -v ./Labs:/app/Labs ravichou/greenlab:0.0.6 python3 runner.py -l 1.2
 ```
