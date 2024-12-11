@@ -54,7 +54,7 @@ def calculate_m(execution_time_s):
 
 # Carbon intensity and PUE constants
 I = 0 # Carbon intensity (kgCO2/Ws, converted from tonCO2/kWh. 1 kWh = 1.000 Wh = 1.000 * 3.600 Ws)
-PUE = 0 # Power Usage Effectiveness, a measure of data center energy efficiency. Use the Azure best value. (no unit)
+PUE = 0 # Power Usage Effectiveness, a measure of data center energy efficiency. Use the Azure worst documented value. (no unit)
 
 def calculate_sci(E_cpu_Ws, E_mem_Ws, M_mgCO2, E_network_Ws = 0, E_storage_Ws = 0):
     SCI = 0
