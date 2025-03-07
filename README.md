@@ -41,5 +41,5 @@ docker run --rm -it -v ./Labs:/app/Labs ravichou/greenlab:*version_number* pytho
 ```
 Example:
 ```shell
-docker run --rm -it -v ./Labs:/app/Labs ravichou/greenlab:0.0.6 python3 runner.py -l 1.2
+docker run --rm -it -v ./Labs:/app/Labs ravichou/greenlab:0.0.9 python3 runner.py -l 1.2
 ```
