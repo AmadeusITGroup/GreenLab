@@ -1,14 +1,14 @@
 # GreenLab v0.6
 
-## What is the repository?
+## What is this repository?
 
-The repository is divided in different labs, that are little exercises.  
+This repository contains several labs (exercises).
 
-The first lab is an introduction that consists in writting little pieces of code about palindroms.
+- The first lab acts as an introduction where the trainee writes some code about palindromes.
 
-The second lab is an implementation of calculation of carbon emission of an application.
+- The second lab aims at implementing the computation of the carbon emissions of an application.
 
-The third lab is to plan a schedule of jobs to minimize carbon emissions within different datacenters.
+- The third lab aims at planning a schedule of jobs that minimizes carbon emissions across multiple datacenters.
 
 
 ## Usage
