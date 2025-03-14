@@ -15,8 +15,32 @@ The third lab is to plan a schedule of jobs to minimize carbon emissions within 
 
 ### 1. Requirements
 
-The following dependencies need to be installed before running :
-* Docker or Podman
+A Linux-like system with Bash.
+- Windows users: enable WSL (https://aka.ms/wslinstall) and install
+  some Linux distribution.
+
+Install git; clone https://github.com/AmadeusITGroup/GreenLab/tree/main
+
+If you are behind a TLS inspector like Netskope, the cloning may fail.
+In that case, add the missing root certificate to the system.  For
+example in Debian/Ubuntu:
+
+    Note the installed filename must end with .crt:
+    $ sudo install -m 644 CERTIFICATE -T /usr/local/share/ca-certificates/my-new-cert.crt
+    $ sudo update-ca-certificates
+
+Install Podman or Docker.  Bash should be able to run "podman" or "docker".
+
+If you use Podman on Linux, you may need to add Dockerhub to your registries:
+
+    $ sudo nano /etc/containers/registries.conf
+    add line: unqualified-search-registries = ['docker.io']
+
+Pull the image "ravichou/greenlab":
+
+    podman pull -q {IMAGE}
+    -or-
+    docker pull -q {IMAGE}
 
 ### 2. Running the labs
 
