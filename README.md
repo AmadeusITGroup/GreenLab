@@ -22,7 +22,7 @@ The following dependencies need to be installed before running :
 
 Options
 
--l *lab_number* : select lab number to run (mandatory)
+-l *lab_number* : select lab number to run (mandatory), (e.g. 1.1 1.3 2 3.1 ...)
 
 -s : run solution
 
