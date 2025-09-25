@@ -30,6 +30,9 @@ example in Debian/Ubuntu:
     $ sudo update-ca-certificates
 
 Install Podman or Docker.  Bash should be able to run "podman" or "docker".
+    
+    $ podman machine init --cpus 2 --memory 2048
+    $ podman machine start
 
 If you use Podman on Linux, you may need to add Dockerhub to your registries:
 
