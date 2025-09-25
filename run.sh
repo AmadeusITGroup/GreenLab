@@ -1,4 +1,5 @@
 #!/bin/bash
+export MSYS_NO_PATHCONV=1
 
 # Script to execute the lab with Docker
 # Usage: ./run.sh -l <lab_number> [-s] [-c]
