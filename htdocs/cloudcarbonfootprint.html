@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-09-12 Fri 21:57 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cloud Carbon Footprint methodology - shortened version for Lab2</title>
+<meta name="author" content="Fabrice BAUZAC" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Cloud Carbon Footprint methodology - shortened version for Lab2</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgfd8c1d3">1. Summary</a></li>
+<li><a href="#orgf5eec6e">2. Energy Estimate (Watt-Hours)</a>
+<ul>
+<li><a href="#org0d43ab0">2.1. Compute</a></li>
+<li><a href="#org2c2bdab">2.2. Memory - Chosen Coefficient</a></li>
+</ul>
+</li>
+<li><a href="#org7330f38">3. Power Usage Effectiveness</a></li>
+<li><a href="#orge60099a">4. Embodied Emissions</a></li>
+<li><a href="#org24aec47">5. Grid emissions factors</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfd8c1d3" class="outline-2">
+<h2 id="orgfd8c1d3"><span class="section-number-2">1.</span> Summary</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Global greenhouse gas emissions from the tech sector are on par or
+larger than the aviation industry, at around 3% for ICT and 2% for
+aviation respectively. Within ICT, data centers are responsible for
+around 1% of greenhouse gas emissions and global electricity
+usage. Currently, most cloud providers do not disclose energy or
+carbon emissions from cloud usage to their customers (at an aggregate
+or individual level), which can be a challenge for organizations who
+want to baseline and reduce their carbon footprint. This application
+is a starting point to enable organizations to have greater visibility
+into their emissions across multiple cloud providers.
+</p>
+
+<p>
+There are currently no guidelines for reporting Scope 3 emissions as
+part of the Greenhouse Gas (GHG) Protocol, which cloud provider usage
+would fall under. However, we hope more and more organizations report
+on both location-based and market-based emissions from cloud usage. To
+that end, this application’s focus is on providing a location-based
+cloud emissions estimate, and we welcome contributions that could aid
+with market-based reporting to include energy attributes such as RECs
+or power purchasing agreements.
+</p>
+
+<p>
+This application pulls usage data (compute, storage, networking, etc.)
+from major cloud providers and calculates estimated energy
+(Watt-Hours) and greenhouse gas emissions expressed as carbon dioxide
+equivalents (metric tons CO2e). We display these visualizations in a
+dashboard for developers, sustainability leaders and other
+stakeholders in an organization to view and take action. It currently
+supports AWS, Google Cloud and Microsoft Azure.
+</p>
+
+<p>
+We calculate our CO2e estimates with this formula:
+</p>
+
+<p>
+Total CO2e = operational emissions + embodied Emissions
+</p>
+
+<p>
+Where:
+</p>
+
+<p>
+Operational emissions = (Cloud provider service usage) x (Cloud energy conversion factors [kWh]) x (Cloud provider Power Usage Effectiveness (PUE)) x (grid emissions factors [metric tons CO2e])
+</p>
+
+<p>
+And:
+</p>
+
+<p>
+Embodied Emissions = estimated metric tons CO2e emissions from the
+manufacturing of datacenter servers, for compute usage
+</p>
+
+<p>
+Our approach builds upon Etsy's Cloud Jewels (cloud energy conversion
+factors) for estimating CO2e emissions for cloud compute and storage
+services, with the addition of networking and memory usage. We
+similarly use point estimates without confidence intervals due to the
+experimental nature of the project, which are not meant as a
+replacement for data from cloud providers, and we cannot guarantee
+their accuracy.
+</p>
+
+<p>
+We encourage and welcome any improvements and extensions to both the
+methodology and software.We aim to keep this approach up to date,
+including using the most recent publicly available data.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf5eec6e" class="outline-2">
+<h2 id="orgf5eec6e"><span class="section-number-2">2.</span> Energy Estimate (Watt-Hours)</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+In order to estimate energy used by cloud providers we are leveraging
+the methodology that Etsy created called “Cloud Jewels” to determine
+energy coefficients (kWh) for cloud service compute and storage
+usage. In addition, we’ve added energy estimation for networking and
+memory usage. You can see a summary of all our energy coefficients in
+Appendix I below.
+</p>
+
+<p>
+We look at the servers used by cloud providers on their website and
+reference their energy usage from both the SPECPower database and the
+2016 US Data Center Energy Usage Report. Etsy looked into GCP servers
+and we have additionally looked into AWS and Azure servers; see list
+of processors below in Appendix II. Of course this does not account
+for any custom processors (such as AWS has) however this is the best
+information we found publicly available.
+</p>
+</div>
+
+<div id="outline-container-org0d43ab0" class="outline-3">
+<h3 id="org0d43ab0"><span class="section-number-3">2.1.</span> Compute</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+For Compute estimation, we follow the same formula as Cloud Jewels,
+which can be broken down into 2 steps. (We recommend reading their
+article for a deeper explanation).
+</p>
+
+<p>
+First, we calculate Average Watts which is the average compute energy
+at a moment in time. When a server is idle, it still takes some power
+to run it (Minimum Watts). As the server utilization increases the
+amount of power consumed increases too. The total energy used is the
+min watts plus the watts from additional server usage (average per
+hour).
+</p>
+
+<p>
+Average Watts = Min Watts + Avg vCPU Utilization * (Max Watts - Min Watts)
+</p>
+
+<p>
+Second, we then translate this into total Watt Hours based on the
+amount of time servers are being used, or virtual CPU hours.
+</p>
+
+<p>
+Compute Watt-Hours = Average Watts * vCPU Hours
+</p>
+
+<p>
+Here are the input data sources for the variables in the formula, and
+context on where we have sourced them:
+</p>
+
+<ul class="org-ul">
+<li>Min Watts (constant) - This is dependent on the CPU processor used
+by the Cloud provider to host the virtual machines. Based on
+publicly available information about which CPUs cloud providers use,
+we looked up the SPECPower database to determine this constant per
+processor micro-architecture.</li>
+<li>Max Watts (constant) - Same as Min Watts, above.</li>
+<li>Avg vCPU Utilization (variable or constant) - This is either pulled
+from the cloud provider APIs (see above) or falls back to 50% (see
+below).</li>
+<li>vCPU Hours (variable) - This is pulled from the cloud usage APIs or
+billing data .</li>
+</ul>
+
+<p>
+When the actual Avg vCPU Utilization for a given time period isn’t
+available from a cloud provider's API, we fall back to a projected
+estimate for the average server utilization of servers in hyperscale
+data centers in 2020 of 50%, from the 2016 U.S. Data Center Energy
+Usage Report. For example, this may occur for AWS EC2 instances that
+are terminated over 2 weeks ago from when the application first
+queries an AWS Account.
+</p>
+
+<p>
+When we know what underlying processor micro-architecture or group of
+micro-architectures are used for a given cloud provider virtual
+machine, we use the min and max watts for that micro-architecture or
+the average of a group of micro-architectures. When a group of
+micro-architectures includes either Ivy Bridge or Sandy Bridge, we use
+the median of that group. This is because we treat those
+micro-architectures as outliers due to their comparatively high
+min/max watts in order to not overestimate. See Appendix II for this
+list of processors and micro-architectures with the min and max watts.
+</p>
+
+<p>
+When we don’t know the underlying processor micro-architecture, we use
+the average or median of all micro-architectures used by that cloud
+provider. Here are those averages per cloud provider:
+</p>
+
+<p>
+AWS:
+</p>
+<ul class="org-ul">
+<li>Average Min Watts: 0.74</li>
+<li>Average Max Watts: 3.5</li>
+</ul>
+
+<p>
+GCP:
+</p>
+<ul class="org-ul">
+<li>Median Min Watts: 0.71</li>
+<li>Median Max Watts: 4.26</li>
+</ul>
+
+<p>
+Azure:
+</p>
+<ul class="org-ul">
+<li>Average Min Watts: 0.78</li>
+<li>Average Max Watts: 3.76</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2c2bdab" class="outline-3">
+<h3 id="org2c2bdab"><span class="section-number-3">2.2.</span> Memory - Chosen Coefficient</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+For the purpose of estimating energy consumption for memory, we are
+assuming hyper-scale cloud providers are utilizing the more efficient
+memory systems on the market: DDR4 or potentially DDR5. Two memory
+manufacturers have provided some information about the energy profile
+of DDR4 memory systems. Crucial says that “As a rule of thumb,
+however, you want to allocate around 3 watts of power for every 8GB of
+DDR3 or DDR4 memory,” which amounts to ~0.375 W/GB. Micron provides a
+power model that states “&#x2026; each DRAM will consume approximately
+408.3mW of total power,” which equals a power consumption of ~0.4083
+W/GB. Given this information, we have decided to take the average of
+both these figures, and go with 0.392 W/GB, or 0.000392 kW/GB. In the
+application we have implemented this as 0.000392 Kilowatt Hour /
+Gigabyte Hour. We want to acknowledge that this is a complex subject
+with limited available data, and welcome additional research or
+studies to improve this coefficient.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7330f38" class="outline-2">
+<h2 id="org7330f38"><span class="section-number-2">3.</span> Power Usage Effectiveness</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+After estimating the kilowatt hours for compute, storage and
+networking, we need to multiply this by the cloud provider Power Usage
+Effectiveness (PUE). PUE is a score of how energy efficient a data
+center is, with the lowest possible score of 1 meaning all energy
+consumed goes directly to powering the servers and none is being
+wasted on cooling. This is based on publicly available information
+provided by the cloud providers. In the case of GCP, they publish
+their PUE. In the case of AWS, we have made a conservative guess based
+on public information. Microsoft's Sustainability team have provided a
+statement1 as to the PUE for the Azure datacenters.
+</p>
+
+<p>
+Here are the cloud provider PUEs being used:
+</p>
+
+<ul class="org-ul">
+<li>AWS: 1.135</li>
+<li>GCP: 1.1</li>
+<li>Azure: 1.185</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge60099a" class="outline-2">
+<h2 id="orge60099a"><span class="section-number-2">4.</span> Embodied Emissions</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Embodied Carbon Emissions or Embedded Emissions is the amount of
+carbon emitted during the creation and disposal of a hardware
+device. In order to estimate embodied emissions in the cloud, we need
+to calculate the fraction of the total embodied emissions that should
+be allocated to your particular amount of usage or workload. For
+example, if you are only utilizing a subset of virtual CPUs that are
+available on a given physical server, then we need to allocate a
+relative amount of embodied emissions to represent this.
+</p>
+
+<p>
+To do this, we have leveraged the Software Carbon Intensity Standard
+recently published by the Green Software Foundation, as well as
+research published by @github-benjamin-davy and the team at Teads.
+</p>
+
+<p>
+Right now, we are only including embodied emissions estimates for
+compute usage types due to limited public data being available, but
+welcome any contributions to apply embodied emissions to other types
+of cloud usage.
+</p>
+
+<p>
+Embodied Carbon Emissions or Embedded Emissions is the amount of
+carbon emitted during the creation and disposal of a hardware
+device. In order to estimate embodied emissions in the cloud, we need
+to calculate the fraction of the total embodied emissions that should
+be allocated to your particular amount of usage or workload. For
+example, if you are only utilizing a subset of virtual CPUs that are
+available on a given physical server, then we need to allocate a
+relative amount of embodied emissions to represent this.
+</p>
+
+<p>
+Recently, the Green Software Foundation (GSF) released the first
+version of the Software Carbon Intensity (SCI) Specification
+(v.Alpha), which defines a methodology for calculating the rate of
+carbon emissions for a software system. While it is on our roadmap to
+more broadly adhere to the SCI standard, for the purpose of estimating
+embodied emissions, we have leveraged a particular part of
+specification. In addition, we have leveraged research published by
+Teads and @github-benjamin-davy in order to apply this to AWS, GCP and
+Azure.
+</p>
+
+<p>
+In our implementation, we leverage this formula provided by the SCI
+standard:
+</p>
+
+<p>
+M = TE * (TimeR/EL) * (RR/TotR)
+</p>
+
+<p>
+Where:
+</p>
+
+<ul class="org-ul">
+<li>TE = Total Embodied Emissions, the sum of Life Cycle Assessment
+(LCA) emissions for all hardware components</li>
+<li>TimeR = Time Reserved, the length of time the hardware is reserved
+for use by the software</li>
+<li>EL = Expected Lifespan, the anticipated time that the equipment will
+be installed</li>
+<li>RR = Resources Reserved, the number of resources reserved for use by
+the software.</li>
+<li>TotR = Total Resources, the total number of resources available.</li>
+</ul>
+
+<p>
+In order to get TE for each specified hardware per cloud provider, we
+leveraged section 5 of the methodology presented in the Teads
+Engineering article “Building an AWS EC2 Carbon Emissions Dataset” by
+Benjamin Davy, to estimate the manufacturing emissions for each
+hardware. In the case of AWS, we directly use the total embodied
+emissions calculated by the Teads team as they have gathered
+additional information about the underlying hardware provisioned for
+each instance type. For GCP and Azure, we have calculated the total
+embodied emissions using the underlying microarchitecture or
+microarchitectures that could be used for a given instance or machine
+type. We welcome any contributions to help us gain further accuracy
+like AWS, which we believe should be possible at least in the case of
+Azure. We have published this embodied emissions data in a spreadsheet
+(extract below), and will be using the Cloud Carbon Footprint
+ccf-coefficients repository as a library of the most up to date
+embodied emissions data for each cloud provider.
+</p>
+
+<p>
+Extract of the Azure spreadsheet:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Series</th>
+<th scope="col" class="org-left">Virtual Machine</th>
+<th scope="col" class="org-right">Instance vCPUs</th>
+<th scope="col" class="org-right">Instance Memory</th>
+<th scope="col" class="org-right">Total Platform Scope 3 Emissions (kgCO₂eq)</th>
+<th scope="col" class="org-right">Total Platform Scope 3 Emissions (mtCO₂eq)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Av2 Standard</td>
+<td class="org-left">A1 v2</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">1216.6</td>
+<td class="org-right">1.2166</td>
+</tr>
+
+<tr>
+<td class="org-left">D11S-15S v2</td>
+<td class="org-left">DS11 v2</td>
+<td class="org-right">2</td>
+<td class="org-right">14</td>
+<td class="org-right">1322.0</td>
+<td class="org-right">1.322</td>
+</tr>
+
+<tr>
+<td class="org-left">D11S-15S v2</td>
+<td class="org-left">DS12 v2</td>
+<td class="org-right">4</td>
+<td class="org-right">28</td>
+<td class="org-right">1322.0</td>
+<td class="org-right">1.322</td>
+</tr>
+
+<tr>
+<td class="org-left">D1s-5s v2</td>
+<td class="org-left">DS2 v2</td>
+<td class="org-right">2</td>
+<td class="org-right">7</td>
+<td class="org-right">1255.5</td>
+<td class="org-right">1.2555</td>
+</tr>
+
+<tr>
+<td class="org-left">D1s-5s v2</td>
+<td class="org-left">DS3 v2</td>
+<td class="org-right">4</td>
+<td class="org-right">14</td>
+<td class="org-right">1255.5</td>
+<td class="org-right">1.2555</td>
+</tr>
+
+<tr>
+<td class="org-left">D1s-5s v2</td>
+<td class="org-left">DS4 v2</td>
+<td class="org-right">8</td>
+<td class="org-right">28</td>
+<td class="org-right">1255.5</td>
+<td class="org-right">1.2555</td>
+</tr>
+
+<tr>
+<td class="org-left">D1s-5s v2</td>
+<td class="org-left">DS5 v2</td>
+<td class="org-right">16</td>
+<td class="org-right">56</td>
+<td class="org-right">1255.5</td>
+<td class="org-right">1.2555</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+For TR (time reserved) we used the amount of time a given compute
+instance was running for.
+</p>
+
+<p>
+For EL we use 4 years, which is the same number chosen by the Teads
+team, based on the Dell PowerEdge R740 Full Life Cycle Assessment.
+</p>
+
+<p>
+For RR, we use the number of vCPUs of the given instance.
+</p>
+
+<p>
+For TR (total resources), we use the largest instance vCPUs for the
+given family. In the case of burstable (AWS) or Shared-Core (AWS)
+families, we use the largest instance in the closest family, as this
+is more accurate than using the largest in the burstable/Shared-Core
+families. For the Azure Constrained vCPUs capable instances, we use
+the underlying vCPUs of each instance as the largest vCPU, as this is
+our current reading of the documentation on their website.
+</p>
+
+<p>
+At this moment, we only include Embodied Emissions for the Compute
+usage types for all the cloud providers we support, but welcome any
+contributions to apply embodied emissions to other types of cloud
+usage.  
+</p>
+</div>
+</div>
+
+<div id="outline-container-org24aec47" class="outline-2">
+<h2 id="org24aec47"><span class="section-number-2">5.</span> Grid emissions factors</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Here are extracts from the original table:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Provider</th>
+<th scope="col" class="org-left">Region</th>
+<th scope="col" class="org-left">Location</th>
+<th scope="col" class="org-left">CO2e (metric ton/kWh)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">AWS</td>
+<td class="org-left">us-east-1</td>
+<td class="org-left">United States</td>
+<td class="org-left">0.000379069</td>
+</tr>
+
+<tr>
+<td class="org-left">AWS</td>
+<td class="org-left">ap-northeast-1</td>
+<td class="org-left">Japan</td>
+<td class="org-left">0.0004658</td>
+</tr>
+
+<tr>
+<td class="org-left">GCP</td>
+<td class="org-left">australia-southeast1</td>
+<td class="org-left">Sydney</td>
+<td class="org-left">0.00064703</td>
+</tr>
+
+<tr>
+<td class="org-left">GCP</td>
+<td class="org-left">europe-west6</td>
+<td class="org-left">Zurich</td>
+<td class="org-left">0.000087</td>
+</tr>
+
+<tr>
+<td class="org-left">Azure</td>
+<td class="org-left">South Africa North</td>
+<td class="org-left">Johannesburg</td>
+<td class="org-left">0.0009006</td>
+</tr>
+
+<tr>
+<td class="org-left">Azure</td>
+<td class="org-left">West Europe</td>
+<td class="org-left">Netherlands</td>
+<td class="org-left">0.0003284</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Fabrice BAUZAC</p>
+<p class="date">Created: 2025-09-12 Fri 21:57</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
