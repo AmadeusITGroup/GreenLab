@@ -45,7 +45,7 @@ if [ ! -z "$flag_cplusplus" ] || [ "$lab_number" = '1.2' ]; then
   # If lab_decimal is 2 or 3
   if [ $lab_decimal -eq 2 ] || [ $lab_decimal -eq 3 ]; then
     lab_path='./Labs/Lab1/Lab1_'$lab_decimal'/LAB1_'$lab_decimal'.cpp'
-    compiled_file='./Labs/Lab1/LAB1_'$lab_decimal'/LAB1_'$lab_decimal'.bin'
+    compiled_file='./Labs/Lab1/Lab1_'$lab_decimal'/LAB1_'$lab_decimal'.bin'
     docker run --rm -it -v ./Labs:/app/Labs ravichou/greenlab:"$version_number" g++ -o $compiled_file $lab_path
   fi
   echo "Compilation done"
